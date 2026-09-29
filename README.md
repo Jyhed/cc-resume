@@ -31,7 +31,8 @@ Claude Code keeps every chat you've ever had. Getting back into one is the annoy
 Put the chats you work on together side by side, and get the same layout back tomorrow.
 
 <p align="center">
-  <img src="docs/desks.gif" alt="Picking chats, arranging them on the bench, saving the desk and opening it" width="100%">
+  <img src="docs/desks.gif" alt="Picking chats, arranging them on the bench, saving the desk, and the four Claude Code sessions resuming side by side in one Windows Terminal window" width="100%">
+  <br><sub>Recorded on a demo machine: made-up projects and chats.</sub>
 </p>
 
 Pick chats from the cards (or add them from the list), hit **Arrange**, and the bench shows the window exactly as it will open. Drag a pane onto another to swap them, pick **Grid**, **Main + stack**, **Columns** or **Rows**, and **Open together**. The app opens on whichever view you used last.
