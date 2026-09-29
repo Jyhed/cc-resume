@@ -27,14 +27,17 @@ function preview() {
   const say = (line, cmd) => Promise.resolve({ kind: 'open', line, cmd });
   const call = (id, fork) => `claude --resume ${id}` + (fork ? ' --fork-session' : '');
   let prefs = DEFAULT_PREFS;
+  // Like the app, a running chat is a jump to its window, not a second copy.
+  let live = [];
+  const jumped = () => Promise.resolve({ kind: 'jump', line: 'already open, jumped to its window', cmd: '' });
   try { prefs = { ...DEFAULT_PREFS, ...JSON.parse(localStorage.getItem('cc-resume-prefs') || '{}') }; } catch { /* private mode: defaults */ }
   return {
-    snapshot: () => fetch('/__snapshot').then(r => r.json()).then(s => ({ projects: [], live: [], ...s })),
+    snapshot: () => fetch('/__snapshot').then(r => r.json()).then(s => { s = { projects: [], live: [], ...s }; live = s.live; return s; }),
     ready: () => Promise.resolve(),
-    resume: (id, mode, fork) => say((fork ? 'forking' : 'resuming') + ' in ' + (mode === 'split' ? 'a split pane' : 'its own window'), call(id, fork)),
+    resume: (id, mode, fork) => (!fork && live.some(l => l.sessionId === id)) ? jumped() : say((fork ? 'forking' : 'resuming') + ' in ' + (mode === 'split' ? 'a split pane' : 'its own window'), call(id, fork)),
     newChat: (_key, mode) => say('new chat in ' + (mode === 'split' ? 'a split pane' : 'its own window'), 'claude'),
     openTogether: (ids, _layout, fork) => say((fork ? 'forked ' : 'opened ') + ids.length + ' side by side', ids.map(id => call(id, fork)).join('  |  ')),
-    jump: () => Promise.resolve({ kind: 'jump', line: 'already open, jumped to its window', cmd: '' }),
+    jump: jumped,
     prefs: () => Promise.resolve(prefs),
     savePrefs: p => { prefs = p; try { localStorage.setItem('cc-resume-prefs', JSON.stringify(p)); } catch { /* ignore */ } return Promise.resolve(); },
     keepChats: () => Promise.resolve(),

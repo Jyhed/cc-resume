@@ -13,7 +13,7 @@ Claude Code keeps every chat you've ever had. Getting back into one is the annoy
 **CC/RESUME** sits in the tray, knows every chat on the machine, and puts any of them back in its own terminal, in the right folder, with one click.
 
 <p align="center">
-  <img src="docs/resume.gif" alt="Resuming a chat from its card, then jumping to one that's already running" width="100%">
+  <img src="docs/resume.gif" alt="Resuming a chat from its card: its own terminal opens and Claude Code picks the chat up. Then a jump to a chat that is already running, whose window comes to the front on a permission prompt" width="100%">
 </p>
 
 ## What it does
