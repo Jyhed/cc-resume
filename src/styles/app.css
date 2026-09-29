@@ -1,0 +1,28 @@
+/* The page reset, the effect layers, and the notice strip. */
+@property --mix { syntax: '<number>'; inherits: true; initial-value: 0; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #0d0d0e; }
+body { user-select: none; -webkit-font-smoothing: antialiased; }
+#app { position: fixed; inset: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid #9b6bff; outline-offset: 2px; }
+
+.fx-sweep { position: absolute; left: 0; top: 0; pointer-events: none; image-rendering: pixelated; z-index: 2; }
+.fx-roll { display: flex; flex-direction: column; }
+.fx-roll > span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* One strip for things the app needs to say once. */
+.notice {
+  position: fixed; left: 50%; top: 74px; z-index: 50; transform: translate(-50%, -12px); opacity: 0; pointer-events: none;
+  display: flex; align-items: center; gap: 14px; max-width: 760px; padding: 10px 10px 10px 18px;
+  border-radius: 24px; background: rgba(18, 18, 20, .92); color: #ededeb; backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .45), inset 0 0 0 1px rgba(255, 255, 255, .1);
+  font: 500 12.5px/1.35 Archivo, system-ui, sans-serif; transition: transform .6s cubic-bezier(.65, 0, .35, 1), opacity .4s;
+}
+.notice.on { transform: translate(-50%, 0); opacity: 1; pointer-events: auto; }
+.notice b { font-weight: 700; }
+.notice button { all: unset; cursor: pointer; white-space: nowrap; font: 600 12px/1 Archivo, system-ui, sans-serif; padding: 9px 14px; border-radius: 16px; }
+.notice .yes { background: #2bff5a; color: #0b0b0b; }
+.notice .no { color: #9a9a97; }
+.notice .no:hover { color: #ededeb; }

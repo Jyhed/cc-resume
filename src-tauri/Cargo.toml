@@ -1,0 +1,31 @@
+[package]
+name = "cc-resume"
+version = "0.2.1"
+description = "Every Claude Code chat on your PC, one click from its terminal"
+authors = ["Jihed Jarboui"]
+license = "MIT"
+repository = "https://github.com/Jyhed/cc-resume"
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+name = "cc_resume_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.6.3", features = [] }
+
+[dependencies]
+tauri = { version = "2.11.6", features = ["tray-icon", "image-png"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+log = "0.4"
+tauri-plugin-log = "2"
+tauri-plugin-global-shortcut = "2.3.2"
+tauri-plugin-autostart = "2.5.1"
+tauri-plugin-single-instance = "2.4.5"
+memchr = "2.8.3"
+dirs = "7.0.0"
+notify = "8.2.0"
+notify-debouncer-mini = "0.7.0"
+windows = { version = "0.61.3", features = ["Win32_Foundation", "Win32_UI_WindowsAndMessaging", "Win32_UI_Accessibility", "Win32_System_Com", "Win32_System_Variant", "Win32_System_Threading", "Win32_Graphics_Gdi", "Win32_System_Environment", "Win32_Security"] }

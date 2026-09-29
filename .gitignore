@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.dev/
+src-tauri/target/
+src-tauri/gen/
+
+# Design explorations and browser checks hold real chat names; they stay on the machine.
+board/
+proposals/
+.playwright-cli/

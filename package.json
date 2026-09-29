@@ -1,0 +1,26 @@
+{
+  "name": "cc-resume",
+  "version": "0.2.1",
+  "description": "Every Claude Code chat on your PC, one click from its terminal",
+  "license": "MIT",
+  "author": "Jihed Jarboui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jyhed/cc-resume"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "tauri": "tauri"
+  },
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@tauri-apps/api": "^2.11.1",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.5",
+    "vite": "^8.3.1"
+  }
+}
